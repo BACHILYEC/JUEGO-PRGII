@@ -17,21 +17,36 @@ public class Controlador {
     Integer personaje;
     boolean juego = true;
     String espaciado = "\t\t\t";
-    String Amarillo = "\u001B[33m";
+    String Morado = "\u001B[35m";
     String Blanco = "\u001B[37m";
     String Rojo = "\u001B[31m";
     String Verde = "\u001B[32m";
     String Azul = "\u001B[34m";
+    String Turquesa = "\u001B[36m";
     Scanner sc = new Scanner(System.in);
 
     public void iniciarJuego() {
-        System.out.println(Rojo);
-        System.out.println("Iniciando juego:");
+        System.out.println(Rojo + "===========================================");
+        System.out.println("         Escuela Politecnica Nacional      ");
+        System.out.println("===========================================" + Blanco);
+
+        System.out.println(Azul + "              Programacion II              " + Blanco);
+        System.out.println();
+        System.out.println(Azul + "Muñoz Adrian");
+        System.out.println("Bucheli Mathias");
+        System.out.println("Cevallos Angela");
+        System.out.println("Cruz Heidy");
+        System.out.println("Heredia Ismael" + Blanco);
+        System.out.println();
+        System.out.println(Rojo +"             Iniciar juego");
+        System.out.println("===========================================" + Blanco);
+        System.out.print(Rojo);
+        
         System.out.print(Blanco);
         while (juego) {
-            System.out.println(Azul);
+            System.out.println(Rojo);
             System.out.println("Izquierda" + "\t\t" + "Derecha");
-            System.out.println(Blanco);
+            System.out.println(Turquesa);
             if (caperucita.getEstado() == 1) {
                 System.out.println("1. Caperucita ");
             } else {
@@ -55,8 +70,10 @@ public class Controlador {
             } else {
                 System.out.println(espaciado + "4. Observador ");
             }
+            if(!juego)
+                break;
             validarRegla();
-            System.out.println(Amarillo);
+            System.out.println(Morado);
             System.out.println("Seleccione el personaje: ");
             personaje = sc.nextInt();
             System.out.println(Blanco);
@@ -75,7 +92,7 @@ public class Controlador {
                     break;
             }
 
-        }
+        } 
 
     }
 
@@ -87,15 +104,16 @@ public class Controlador {
             lobo.comer(caperucita);
             juego = false;
         } else if (caperucita.getEstado() == uva.getEstado() && observador.getEstado() != uva.getEstado()) {
-            System.out.println("Perdiste");
+            System.out.println(Rojo + "Perdiste" + Blanco);
             caperucita.comer(uva);
             juego = false;
         } else if (caperucita.getEstado() == lobo.getEstado() && observador.getEstado() != lobo.getEstado()) {
-            System.out.println("Perdiste");
+            System.out.println(Rojo + "Perdiste" + Blanco);
             lobo.comer(caperucita);
             juego = false;
         } else if (caperucita.getEstado() == -1 && lobo.getEstado() == -1 && uva.getEstado() == -1
                 && observador.getEstado() == -1) {
+                    System.out.println(Verde);
             System.out.println("Ganaste el juego");
             juego = false;
         }
