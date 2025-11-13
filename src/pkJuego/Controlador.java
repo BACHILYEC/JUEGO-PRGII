@@ -23,6 +23,7 @@ public class Controlador {
     String Verde = "\u001B[32m";
     String Azul = "\u001B[34m";
     String Turquesa = "\u001B[36m";
+    String Rosa = "\u001B[95m";
     Scanner sc = new Scanner(System.in);
 
     public void iniciarJuego() {
@@ -75,7 +76,13 @@ public class Controlador {
             validarRegla();
             System.out.println(Morado);
             System.out.println("Seleccione el personaje: ");
-            personaje = sc.nextInt();
+            if (sc.hasNextInt()) {
+                personaje = sc.nextInt();
+            } else {
+                System.out.println(Rosa + "Ingresa un numero de 1-4" + Blanco);
+                sc.next();
+                continue;
+            }
             System.out.println(Blanco);
             switch (personaje) {
                 case 1:
@@ -90,11 +97,14 @@ public class Controlador {
                 case 4:
                     barca.cruzarPersonaje(observador, observador);
                     break;
+                default:
+                    System.out.println(Rojo + "Elige un personaje de 1-4" + Blanco);
             }
 
         } 
 
     }
+
 
     public void validarRegla() {
         if (caperucita.getEstado() == lobo.getEstado() && lobo.getEstado() == uva.getEstado()
